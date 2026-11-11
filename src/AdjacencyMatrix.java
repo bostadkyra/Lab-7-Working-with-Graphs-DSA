@@ -34,17 +34,23 @@ public class AdjacencyMatrix {
         return result;
     }
 
-    public void print(){
+    public void print() {
+        final int LABEL_W = 4; // width of the row-label column
+        final int COL_W = 6; // width of every data column
+
         System.out.println("Adjacency Matrix:");
-        StringBuilder header = new StringBuilder("  ");
-        for (Node n:nodes){
-            header.append(String.format("%5s, n")); //%5s right aligns with a minimum field width of 5 characters
+
+        StringBuilder header = new StringBuilder(" ".repeat(LABEL_W)); // Header: blank space the same width as the row labels, then each label
+
+        for (Node n : nodes) {
+            header.append(String.format("%" + COL_W + "s", n.getLabel()));
         }
         System.out.println(header);
-        for (Node row:nodes){
-            StringBuilder sb = new StringBuilder(String.format("%-5s", row)); //%- left aligns the string value
-            for (int j = 0; j < nodes.size(); j++){
-                sb.append(String.format("%5.1f", matrix[row.getIndex()][j])); //%5.1f sets field to 5 width and sets floating number to 1 decimal place
+
+        for (Node row : nodes) {
+            StringBuilder sb = new StringBuilder(String.format("%-" + LABEL_W + "s", row.getLabel()));
+            for (int j = 0; j < nodes.size(); j++) {
+                sb.append(String.format("%" + COL_W + ".1f", matrix[row.getIndex()][j]));
             }
             System.out.println(sb);
         }
