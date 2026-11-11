@@ -60,8 +60,8 @@ public class AdjacencyList {
             StringBuilder sb = new StringBuilder(n + " -> ");
             for(Edge e:adj.get(n)){
                 sb.append(e.to).append("(").append(e.weight).append(") ");
-                System.out.println(sb.toString().trim());
             }
+            System.out.println(sb.toString().trim());
         }
     }
 }
